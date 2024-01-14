@@ -2,6 +2,18 @@
 
 ## Versions ##
 
+### 0.25.1 ###
+
+* Updates bundled module ``xHyper-V`` to current [HyperVDsc 4.0.0-preview0005](https://github.com/dsccommunity/HyperVDsc)
+  * Exchanges the bundled module ``DscResource.Common 0.13.0`` to current [DscResource.Common 0.16.0](https://github.com/dsccommunity/DscResource.Common)
+* Updates bundled module ``xPSDesiredStateConfiguration`` to current [xPSDesiredStateConfiguration 9.2.0-preview0008](https://github.com/dsccommunity/xPSDesiredStateConfiguration)
+
+* Implements ability to define a configuration for the network adapter (#188)
+  * adds an example for [network configuration with Vlans](Examples\MultipleNetorkWithVlanExample.psd1)
+
+**Known issues:**
+* on a multilanguage system the Hyper-V Dsc will fail because it cannot locate localized files, this is due to a known bug in ``DscResource.Common``: https://github.com/dsccommunity/DscResource.Common/issues/37
+
 ### 0.25.0 ###
 
 * Adds Windows 11 Enterprise 23H2 (2310) evaluation media

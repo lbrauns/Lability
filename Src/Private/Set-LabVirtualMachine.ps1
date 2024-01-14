@@ -83,7 +83,7 @@ function Set-LabVirtualMachine {
         ## Resolve the xVMHyperV resource parameters
         $vmHyperVParams = Get-LabVirtualMachineProperty @PSBoundParameters;
         Write-Verbose -Message ($localized.CreatingVMGeneration -f $vmHyperVParams.Generation);
-        Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMHyperV -Prefix VM;
+        Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMHyperV -Prefix VM;
 
         Invoke-LabDscResource -ResourceName VM -Parameters $vmHyperVParams;
 
@@ -92,7 +92,7 @@ function Set-LabVirtualMachine {
             ## Ensure we have the node's name
             $vmProcessorParams['VMName'] = $Name;
             Write-Verbose -Message ($localized.SettingVMConfiguration -f 'VM processor', $Name);
-            Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMProcessor -Prefix VMProcessor;
+            Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMProcessor -Prefix VMProcessor;
             Invoke-LabDscResource -ResourceName VMProcessor -Parameters $vmProcessorParams;
         }
 
@@ -101,7 +101,7 @@ function Set-LabVirtualMachine {
             ## Ensure we have the node's name
             $vmDvdDriveParams['VMName'] = $Name;
             Write-Verbose -Message ($localized.SettingVMConfiguration -f 'VM DVD drive', $Name);
-            Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMDvdDrive -Prefix VMDvdDrive;
+            Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMDvdDrive -Prefix VMDvdDrive;
             Invoke-LabDscResource -ResourceName VMDvdDrive -Parameters $vmDvdDriveParams;
         }
 

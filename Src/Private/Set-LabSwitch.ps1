@@ -23,7 +23,7 @@ function Set-LabSwitch {
         $networkSwitch = Resolve-LabSwitch @PSBoundParameters;
         if (($null -eq $networkSwitch.IsExisting) -or ($networkSwitch.IsExisting -eq $false)) {
 
-            Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMSwitch -Prefix VMSwitch;
+            Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMSwitch -Prefix VMSwitch;
             [ref] $null = Invoke-LabDscResource -ResourceName VMSwitch -Parameters $networkSwitch;
         }
 

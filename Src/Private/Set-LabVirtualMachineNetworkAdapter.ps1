@@ -28,25 +28,7 @@ function Set-LabVirtualMachineNetworkAdapter {
     
             foreach( $netAdapterConf in $NetAdapterConfiguration  ){
 
-                <#
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $Id,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $Name,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $SwitchName,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $VMName,
-                #>
-
-                Write-Debug "Getting adapters for VM $($NodeName)"
+                Write-Verbose "Getting adapters for VM $($NodeName)"
 
                 $resolveLabSwitchParams = @{
                     Name = $netAdapterConf.SwitchName;
@@ -83,16 +65,10 @@ function Set-LabVirtualMachineNetworkAdapter {
 
                     Write-Verbose -Message ($localized.ConfiguringNetworkAdapter -f $netAdapterConfigurationParams.Id, $NodeName);
 
-                    foreach( $key in $netAdapterConfigurationParams.Keys ){
-                        Write-Verbose "$($key) = $($netAdapterConfigurationParams.$key)"
-                    }
-
-                    Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMNetworkAdapter -Prefix VMNetworkAdapter;
+                    Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMNetworkAdapter -Prefix VMNetworkAdapter;
                     Invoke-LabDscResource -ResourceName VMNetworkAdapter -Parameters $netAdapterConfigurationParams;
-
                 }
-            }
-
+            }#end foreach
         } #end process
     } #end function
     

@@ -26,7 +26,7 @@ function Remove-LabSwitch {
 
                 $networkSwitch['Ensure'] = 'Absent';
                 [ref] $null = $networkSwitch.Remove('IsExisting');
-                Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMSwitch -Prefix VMSwitch;
+                Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMSwitch -Prefix VMSwitch;
                 [ref] $null = Invoke-LabDscResource -ResourceName VMSwitch -Parameters $networkSwitch;
             }
         }

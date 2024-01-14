@@ -39,7 +39,7 @@ function Get-LabVM {
 
             try {
 
-                Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMHyperV -Prefix VM;
+                Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMHyperV -Prefix VM;
                 $vm = Get-LabDscResource -ResourceName VM -Parameters $xVMParams;
                 Write-Output -InputObject ([PSCustomObject] $vm);
             }

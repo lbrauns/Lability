@@ -5,8 +5,10 @@ Import-Module -Name (Join-Path -Path $modulePath `
     -ChildPath (Join-Path -Path 'xPSDesiredStateConfiguration.Common' `
         -ChildPath 'xPSDesiredStateConfiguration.Common.psm1'))
 
+Import-Module -Name (Join-Path -Path $modulePath -ChildPath 'DscResource.Common')
+
 # Import Localization Strings
-$script:localizedData = Get-LocalizedData -ResourceName 'xPSDesiredStateConfiguration.PSWSIIS' -ScriptRoot $PSScriptRoot
+$script:localizedData = Get-LocalizedData -DefaultUICulture 'en-US'
 
 New-Variable -Name DscWebServiceDefaultAppPoolName  -Value 'PSWS' -Option ReadOnly -Force -Scope Script
 
@@ -1020,3 +1022,11 @@ function Set-BindingRedirectSettingInWebConfig
         }
     }
 }
+
+Export-ModuleMember -Variable @('DscWebServiceDefaultAppPoolName') -Function @(
+    'New-ResourceSetConfigurationScriptBlock',
+    'New-PSWSEndpoint',
+    'Set-AppSettingsInWebconfig',
+    'Set-BindingRedirectSettingInWebConfig',
+    'Remove-PSWSEndpoint'
+)

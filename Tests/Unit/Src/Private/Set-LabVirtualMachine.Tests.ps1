@@ -31,7 +31,7 @@ Describe 'Unit\Src\Private\Set-LabVirtualMachine' {
 
             Set-LabVirtualMachine @setLabVirtualMachineParams;
 
-            Assert-MockCalled Import-LabDscResource -ParameterFilter { $ModuleName -eq 'xHyper-V' -and $ResourceName -eq 'MSFT_xVMHyperV' } -Scope It;
+            Assert-MockCalled Import-LabDscResource -ParameterFilter { $ModuleName -eq 'HyperVDsc' -and $ResourceName -eq 'DSC_VMHyperV' } -Scope It;
         }
 
         It 'Invokes Hyper-V DSC resource' {

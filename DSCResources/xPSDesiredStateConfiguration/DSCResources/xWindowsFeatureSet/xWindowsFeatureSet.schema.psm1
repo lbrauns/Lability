@@ -8,6 +8,7 @@ Import-Module -Name (Join-Path -Path $modulePath `
     -ChildPath (Join-Path -Path 'xPSDesiredStateConfiguration.Common' `
         -ChildPath 'xPSDesiredStateConfiguration.Common.psm1'))
 
+Import-Module -Name (Join-Path -Path $modulePath -ChildPath 'DscResource.Common')
 <#
     .SYNOPSIS
         A composite DSC resource to configure a set of similar xWindowsFeature resources.
@@ -33,7 +34,7 @@ Import-Module -Name (Join-Path -Path $modulePath `
 
     .PARAMETER LogPath
         The custom file path to which to log this operation.
-        If not passed in, the default log path will be used (%windir%\logs\ServerManager.log).
+        If not passed in, the default log path will be used (%WINDIR%\logs\ServerManager.log).
 #>
 configuration xWindowsFeatureSet
 {

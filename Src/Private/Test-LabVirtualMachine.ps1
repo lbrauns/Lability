@@ -54,7 +54,7 @@ function Test-LabVirtualMachine {
     process {
 
         $vmHyperVParams = Get-LabVirtualMachineProperty @PSBoundParameters;
-        Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMHyperV -Prefix VM;
+        Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMHyperV -Prefix VM;
 
         try {
 

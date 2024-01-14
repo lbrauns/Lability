@@ -31,7 +31,7 @@ Describe 'Unit\Src\Private\Clear-LabVirtualMachine' {
 
             Clear-LabVirtualMachine @clearLabVirtualMachineParams;
 
-            Assert-MockCalled Import-LabDscResource -ParameterFilter { $ModuleName -eq 'xHyper-V' -and $ResourceName -eq 'MSFT_xVMHyperV' } -Scope It;
+            Assert-MockCalled Import-LabDscResource -ParameterFilter { $ModuleName -eq 'HyperVDsc' -and $ResourceName -eq 'DSC_VMHyperV' } -Scope It;
         }
 
         It 'Invokes Hyper-V DSC resource' {

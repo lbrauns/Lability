@@ -19,16 +19,6 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @(
-        'Test-IsNanoServer',
-        'Test-DscParameterState',
-        'New-InvalidArgumentException',
-        'New-InvalidDataException',
-        'New-InvalidOperationException',
-        'New-ObjectNotFoundException',
-        'New-InvalidResultException',
-        'New-NotImplementedException',
-        'Get-LocalizedData',
-        'Set-DscMachineRebootRequired',
         'New-ResourceSetConfigurationScriptBlock'
     )
 
@@ -36,9 +26,7 @@
     CmdletsToExport   = @()
 
     # Variables to export from this module
-    VariablesToExport = @(
-        'DscWebServiceDefaultAppPoolName'
-    )
+    VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport   = @()
@@ -54,7 +42,7 @@
             Tags         = @('DesiredStateConfiguration', 'DSC', 'DSCResourceKit', 'DSCResource')
 
             # A URL to the license for this module.
-            LicenseUri   = 'https://github.com/dsccommunity/xPSDesiredStateConfiguration/blob/master/LICENSE'
+            LicenseUri   = 'https://github.com/dsccommunity/xPSDesiredStateConfiguration/blob/main/LICENSE'
 
             # A URL to the main website for this project.
             ProjectUri   = 'https://github.com/dsccommunity/xPSDesiredStateConfiguration'

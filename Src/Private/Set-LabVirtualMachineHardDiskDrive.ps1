@@ -56,7 +56,7 @@ function Set-LabVirtualMachineHardDiskDrive {
                 $vhdFilename = '{0}.{1}' -f $vhdName, $diskDrive.Generation.ToLower();
                 $vhdPath = Join-Path -Path $vmHardDiskPath -ChildPath $vhdFilename;
                 Write-Verbose -Message ($localized.CreatingAdditionalVhdFile -f $vhdPath);
-                Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVhd -Prefix Vhd;
+                Import-LabDscResource -ModuleName HyperVDsc -ResourceName MSFT_xVhd -Prefix Vhd;
                 Invoke-LabDscResource -ResourceName Vhd -Parameters $vhdParams;
             }
 
@@ -68,7 +68,7 @@ function Set-LabVirtualMachineHardDiskDrive {
                 Path = $VhdPath;
                 Ensure = 'Present';
             }
-            Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMHardDiskDrive -Prefix HardDiskDrive;
+            Import-LabDscResource -ModuleName HyperVDsc -ResourceName MSFT_xVMHardDiskDrive -Prefix HardDiskDrive;
             Invoke-LabDscResource -ResourceName HardDiskDrive -Parameters $vmHardDiskDriveParams;
 
         } #end for

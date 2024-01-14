@@ -55,7 +55,7 @@ function Remove-LabVMDisk {
                     Type = 'Differencing';
                     Ensure = 'Absent';
                 }
-                Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVHD -Prefix VHD;
+                Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VHD -Prefix VHD;
                 [ref] $null = Invoke-LabDscResource -ResourceName VHD -Parameters $vhd;
             }
         }

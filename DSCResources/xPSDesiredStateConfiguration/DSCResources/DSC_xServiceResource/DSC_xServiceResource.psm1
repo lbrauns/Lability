@@ -13,8 +13,10 @@ Import-Module -Name (Join-Path -Path $modulePath `
     -ChildPath (Join-Path -Path 'xPSDesiredStateConfiguration.Common' `
         -ChildPath 'xPSDesiredStateConfiguration.Common.psm1'))
 
+Import-Module -Name (Join-Path -Path $modulePath -ChildPath 'DscResource.Common')
+
 # Import Localization Strings
-$script:localizedData = Get-LocalizedData -ResourceName 'DSC_xServiceResource'
+$script:localizedData = Get-LocalizedData -DefaultUICulture 'en-US'
 
 <#
     .SYNOPSIS
@@ -115,12 +117,7 @@ function Get-TargetResource
         cmdlet.
 
     .PARAMETER Ensure
-        Specifies whether the service should exist or not.
-
-        Set this property to Present to create or modify a service.
-        Set this property to Absent to delete a service.
-
-        The default value is Present.
+        Ensures that the service is present or absent. Defaults to Present.
 
     .PARAMETER Path
         The path to the executable the service should run.
@@ -130,7 +127,7 @@ function Get-TargetResource
         order to start the service.
 
     .PARAMETER StartupType
-        The startup type the service should have.
+        Indicates the startup type for the service.
 
     .PARAMETER BuiltInAccount
         The built-in account the service should start under.
@@ -373,18 +370,13 @@ function Set-TargetResource
         cmdlet.
 
     .PARAMETER Ensure
-        Specifies whether the service should exist or not.
-
-        Set this property to Present to test if a service exists.
-        Set this property to Absent to test if a service does not exist.
-
-        The default value is Present.
+        Ensures that the service is present or absent. Defaults to Present.
 
     .PARAMETER Path
         The path to the executable the service should be running.
 
     .PARAMETER StartupType
-        The startup type the service should have.
+        Indicates the startup type for the service.
 
     .PARAMETER BuiltInAccount
         The built-in account the service should start under.

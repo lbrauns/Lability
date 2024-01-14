@@ -51,7 +51,7 @@ function Test-LabVMDisk {
             $vhd['Generation'] = 'VHDX';
         }
 
-        Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVHD -Prefix VHD;
+        Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VHD -Prefix VHD;
         $testDscResourceResult = Test-LabDscResource -ResourceName VHD -Parameters $vhd;
 
         if ($Ensure -eq 'Absent') {

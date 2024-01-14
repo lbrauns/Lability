@@ -42,7 +42,7 @@ function Set-LabVMDisk {
             Type       = 'Differencing';
         }
 
-        Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVHD -Prefix VHD;
+        Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VHD -Prefix VHD;
         [ref] $null = Invoke-LabDscResource -ResourceName VHD -Parameters $vhd;
 
     } #end process

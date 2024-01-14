@@ -59,7 +59,7 @@ function Clear-LabVirtualMachine {
             ## Resolve the xVMHyperV resource parameters
             $vmHyperVParams = Get-LabVirtualMachineProperty @PSBoundParameters;
             $vmHyperVParams['Ensure'] = 'Absent';
-            Import-LabDscResource -ModuleName xHyper-V -ResourceName MSFT_xVMHyperV -Prefix VM;
+            Import-LabDscResource -ModuleName HyperVDsc -ResourceName DSC_VMHyperV -Prefix VM;
             Invoke-LabDscResource -ResourceName VM -Parameters $vmHyperVParams -ErrorAction SilentlyContinue;
         }
 

@@ -38,13 +38,16 @@ function Test-LabVM {
             else {
 
                 ## No point testing switch, vhdx and VM if the image isn't available
-                Write-Verbose -Message ($localized.TestingVMConfiguration -f 'Virtual Switch', $node.SwitchName);
-                foreach ($switchName in $node.SwitchName) {
 
+                foreach ($switchName in $node.SwitchName) {
+                
+                    Write-Verbose -Message ($localized.TestingVMConfiguration -f 'Virtual Switch', $switchName );
+                    
                     if (-not (Test-LabSwitch -Name $switchName -ConfigurationData $ConfigurationData)) {
 
                         $isNodeCompliant = $false;
                     }
+
                 }
 
                 Write-Verbose -Message ($localized.TestingVMConfiguration -f 'VHDX', $node.Media);

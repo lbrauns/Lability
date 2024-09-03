@@ -50,6 +50,7 @@ function Set-LabVMDiskFileUnattendXml {
             Timezone = $node.Timezone;
             RegisteredOwner = $node.RegisteredOwner;
             RegisteredOrganization = $node.RegisteredOrganization;
+            ExecuteCommand = $node.UnattendSpecializeCommands;
         }
         Write-Verbose -Message $localized.SettingAdministratorPassword;
 

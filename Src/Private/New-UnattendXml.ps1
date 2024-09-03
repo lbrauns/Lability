@@ -156,10 +156,10 @@ function New-UnattendXml {
                     if (($null -ne $ExecuteCommand) -or ($ExecuteCommand.Length -gt 0)) {
 
                         $commandOrder = 1;
-                        foreach ($synchronousCommand in $ExecuteCommand) {
 
-                            $runSynchronousElement = $component.AppendChild($unattendXml.CreateElement('RunSynchronous','urn:schemas-microsoft-com:unattend'));
-                            $syncCommandElement = $runSynchronousElement.AppendChild($unattendXml.CreateElement('RunSynchronousCommand','urn:schemas-microsoft-com:unattend'));
+                        $runSynchronousElement = $component.AppendChild($unattendXml.CreateElement('RunSynchronous','urn:schemas-microsoft-com:unattend'));
+
+                        foreach ($synchronousCommand in $ExecuteCommand) {
                             [ref] $null = $syncCommandElement.SetAttribute('action','http://schemas.microsoft.com/WMIConfig/2002/State','add');
                             $syncCommandDescriptionElement = $syncCommandElement.AppendChild($unattendXml.CreateElement('Description','urn:schemas-microsoft-com:unattend'));
                             [ref] $null = $syncCommandDescriptionElement.AppendChild($unattendXml.CreateTextNode($synchronousCommand['Description']));
